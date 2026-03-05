@@ -33,6 +33,8 @@ ALU - Arithmetic Logic Unit
 
 HAZ_CTRL - Hazard Controller (forwards, stalls, and flushes if needed) 
 
+CSR - Control and Status Registers
+
 ### Auxiliary Modules
 MUX2T1 
 
