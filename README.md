@@ -7,7 +7,7 @@ The goal is to implement I, then M, then A, then C, then F, then all the extensi
 
 The processor itself will be pipelined, it will not be controlled directly with an FSM. We hope to make it 5-7 stages maximum. 
 
-## RV32IMACF_ZiCSR_ZiFenci_ZiCntr
+## [RV32IMACF_ZiCSR_ZiFenci_ZiCntr](https://five-embeddev.com/riscv-user-isa-manual/Priv-v1.12/instr-table.html) 
 
 ### Schematic
 [Insert Draw.IO Schematic Here]
