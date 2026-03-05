@@ -13,17 +13,27 @@ The processor itself will be pipelined, it will not be controlled directly with 
 [Insert Draw.IO Schematic Here]
 
 ### Submodules
-PROG_CNTR - Simple 32 bit program counter
+PROG_CNTR - Simple 32 bit program counter 
+
 REG_FILE  - 32x32 register file 
-IMEM - 24kB Instruction Memory
-DMEM - 40kB Data Memory
-DCDR - Instruction Decoder 
-IMM_GEN - Immediate Generator (3 bit selected)
-JUMP_GEN - Jump/Branch Generator (2 bit selected)
-BR_PRED - Branch Predictor (2-State)
-HAZ_CTRL - Hazard Controller (forwards, stalls, and flushes if needed)
+
+IMEM - 24kB Instruction Memory 
+
+DMEM - 40kB Data Memory 
+
+DCDR - Instruction Decoder  
+
+IMM_GEN - Immediate Generator (3 bit selected) 
+
+JUMP_GEN - Jump/Branch Generator (2 bit selected) 
+
+BR_PRED - Branch Predictor (2-State) 
+
+HAZ_CTRL - Hazard Controller (forwards, stalls, and flushes if needed) 
 
 ### Auxiliary Modules
-MUX2T1
-MUX4T1
-MUX8T1
+MUX2T1 
+
+MUX4T1 
+
+MUX8T1 
