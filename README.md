@@ -29,6 +29,8 @@ JUMP_GEN - Jump/Branch Generator (2 bit selected)
 
 BR_PRED - Branch Predictor (2-State) 
 
+ALU - Arithmetic Logic Unit
+
 HAZ_CTRL - Hazard Controller (forwards, stalls, and flushes if needed) 
 
 ### Auxiliary Modules
