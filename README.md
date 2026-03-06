@@ -10,7 +10,7 @@ The processor itself will be pipelined, it will not be controlled directly with 
 ## [RV32IMACF_ZiCSR_ZiFenci_ZiCntr](https://five-embeddev.com/riscv-user-isa-manual/Priv-v1.12/instr-table.html) 
 
 ### Schematic
-![RTP_SCHEMATIC](RTP.drawio.png)
+![RTP_SCHEMATIC](RTP.drawio.svg)
 
 ### Submodules
 PROG_CNTR - Simple 32 bit program counter 
