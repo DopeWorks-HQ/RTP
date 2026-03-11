@@ -1,0 +1,29 @@
+[*]
+[*] GTKWave Analyzer v3.4.0 (w)1999-2022 BSI
+[*] Fri Mar  6 07:20:04 2026
+[*]
+[dumpfile] "/home/rccramer/Desktop/rtp/hdl/sim/tb_BR_PRED/tb_BR_PRED.vcd"
+[dumpfile_mtime] "Fri Mar  6 07:16:40 2026"
+[dumpfile_size] 3099
+[savefile] "/home/rccramer/Desktop/rtp/hdl/sim/tb_BR_PRED/tb_BR_PRED.gtkw"
+[timestart] 0
+[size] 1000 600
+[pos] -1 -1
+*-15.000000 75000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb_BR_PRED.
+[sst_width] 297
+[signals_width] 94
+[sst_expanded] 1
+[sst_vpaned_height] 158
+@28
+tb_BR_PRED.DUT.CLK
+tb_BR_PRED.DUT.RST
+tb_BR_PRED.DUT.ACT
+@29
+tb_BR_PRED.DUT.BR_TAKEN
+@28
+tb_BR_PRED.DUT.NS[1:0]
+tb_BR_PRED.DUT.PS[1:0]
+tb_BR_PRED.DUT.TAKE_BR
+[pattern_trace] 1
+[pattern_trace] 0

@@ -3,8 +3,8 @@ name: Export draw.io diagrams
 on:
   push:
     paths:
-      - 'docs/**/*.drawio'
-      - '.github/workflows/drawio-export.yml'
+      - "docs/**/*.drawio"
+      - ".github/workflows/drawio-export.yml"
   workflow_dispatch:
 
 permissions:
@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out repository
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -25,16 +25,29 @@ jobs:
         with:
           path: docs
           format: svg
+          output: export
+          remove-page-suffix: true
           transparent: false
+          action-mode: all
 
-      - name: Commit exported SVGs if changed
+      - name: Debug generated files
         run: |
-          if [[ -n "$(git status --porcelain)" ]]; then
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add docs/*.svg docs/**/*.svg
+          echo "Drawio files:"
+          find docs -type f -name "*.drawio" | sort
+          echo
+          echo "SVG files:"
+          find docs -type f -name "*.svg" | sort
+
+      - name: Commit exported SVGs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          find docs -type f -name "*.svg" -exec git add {} \;
+
+          if git diff --cached --quiet; then
+            echo "No diagram changes"
+          else
             git commit -m "Auto-export draw.io diagrams"
             git push
-          else
-            echo "No diagram export changes to commit"
           fi

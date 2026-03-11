@@ -7,6 +7,7 @@
     BR_PRED(
         .CLK(),
         .RST(),
+        .ACT(),
         .TAKEN(),
         .NOT_TAKEN(),
         .TAKE_BR()
@@ -18,12 +19,12 @@
 module BR_PRED(
     input CLK,
     input RST,
-    input TAKEN,
-    input NOT_TAKEN,
+    input ACT,
+    input BR_TAKEN,
     output logic TAKE_BR
 );
 
-    typedef enum logic { 
+    typedef enum logic [1:0] { 
         STRONGLY_NOT_TAKEN,
         WEAKLY_NOT_TAKEN,
         WEAKLY_TAKEN,
@@ -43,36 +44,40 @@ module BR_PRED(
         case(PS)
 
             STRONGLY_NOT_TAKEN: begin
-                if(NOT_TAKEN & ~TAKEN)
+                TAKE_BR = 1'b0;
+                if(~BR_TAKEN && ACT)
                     NS = STRONGLY_NOT_TAKEN;
-                else if(TAKEN & ~NOT_TAKEN)
+                else if(BR_TAKEN && ACT)
                     NS = WEAKLY_NOT_TAKEN;
                 else
                     NS = STRONGLY_NOT_TAKEN;
             end
 
             WEAKLY_NOT_TAKEN: begin
-                if(NOT_TAKEN & ~TAKEN)
+                TAKE_BR = 1'b0;
+                if(~BR_TAKEN && ACT)
                     NS = STRONGLY_NOT_TAKEN;
-                else if(TAKEN & ~NOT_TAKEN)
+                else if(BR_TAKEN && ACT)
                     NS = WEAKLY_TAKEN;
                 else
                     NS = WEAKLY_NOT_TAKEN;
             end
 
             WEAKLY_TAKEN: begin
-                if(NOT_TAKEN & ~TAKEN)
+                TAKE_BR = 1'b1;
+                if(~BR_TAKEN && ACT)
                     NS = WEAKLY_NOT_TAKEN;
-                else if(TAKEN & ~NOT_TAKEN)
+                else if(BR_TAKEN && ACT)
                     NS = STRONGLY_TAKEN;
                 else
                     NS = WEAKLY_TAKEN;
             end
 
             STRONGLY_TAKEN: begin
-                if(NOT_TAKEN & ~TAKEN)
+                TAKE_BR = 1'b1;
+                if(~BR_TAKEN && ACT)
                     NS = WEAKLY_TAKEN;
-                else if(~NOT_TAKEN & TAKEN)
+                else if(BR_TAKEN && ACT)
                     NS = STRONGLY_TAKEN;
                 else
                     NS = STRONGLY_TAKEN;
