@@ -38,7 +38,10 @@ BITSTREAM := $(word 2,$(MAKECMDGOALS))
 $(eval $(BITSTREAM):;@:)
 endif
 
-.PHONY: init-tb sim lint lint-all wave clean synth build $(TOP)
+.PHONY: init-tb sim lint lint-all wave clean synth build install $(TOP)
+
+install:
+	sudo apt install gtkwave verilator iverilog openfpgaloader
 
 init-tb:
 	@if [ ! -f hdl/rtl/$(TOP).sv ]; then \
