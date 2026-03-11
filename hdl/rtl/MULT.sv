@@ -1,8 +1,9 @@
 `timescale 1ns/1ps
 
 module MULT(
-    input mult_sel,
-    input sign,
+    input CLK
+    input SEL,
+    input SIGN,
     input [31:0] OP_A,
     input [31:0] OP_B,
     output logic [31:0] RESULT
@@ -15,10 +16,10 @@ module MULT(
     logic sign_reg;
 
     always_ff@(posedge clk) begin
-        product <= $unsigned(A) * $unsigned(B);
-        product_signed <= $signed(A) * $signed(B);
-        mult_sel_reg <= mult_sel;
-        sign_reg <= sign;
+        product <= $unsigned(OP_A) * $unsigned(OP_B);
+        product_signed <= $signed(OP_A) * $signed(OP_B);
+        mult_sel_reg <= SEL;
+        sign_reg <= SIGN;
     end
 
     always_comb begin
