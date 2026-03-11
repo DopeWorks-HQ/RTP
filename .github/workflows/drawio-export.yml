@@ -28,16 +28,22 @@ jobs:
           output: export
           remove-page-suffix: true
           transparent: false
+          action-mode: all
 
-      - name: Show exported files
-        run: find docs -type f \( -name "*.svg" -o -name "*.drawio" \) | sort
+      - name: Debug generated files
+        run: |
+          echo "Drawio files:"
+          find docs -type f -name "*.drawio" | sort
+          echo
+          echo "SVG files:"
+          find docs -type f -name "*.svg" | sort
 
       - name: Commit exported SVGs
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          find docs -type f -name "*.svg" -print0 | xargs -0 git add
+          find docs -type f -name "*.svg" -exec git add {} \;
 
           if git diff --cached --quiet; then
             echo "No diagram changes"
