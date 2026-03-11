@@ -3,7 +3,7 @@ name: Export draw.io diagrams
 on:
   push:
     paths:
-      - "docs/**/*.drawio"
+      - "docs/*.drawio"
       - ".github/workflows/drawio-export.yml"
   workflow_dispatch:
 
