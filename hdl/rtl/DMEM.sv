@@ -42,6 +42,7 @@ module DMEM
 
     assign addr_offset = 32'h6000;
     assign addr = ADDR - addr_offset;
+    assign MMIO_ACCESS = 
 
     assign INVALID_ACCESS = (ADDR < 32'h6000) || 
             ((ADDR > 16'hFFFF) && ~MMIO_ACCESS);
