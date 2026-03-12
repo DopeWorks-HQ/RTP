@@ -15,7 +15,9 @@
     // END: BR_PRED
 
 */
+`timescale 1ns/1ps
 
+/* verilator lint_off MULTITOP */
 module BR_PRED(
     input CLK,
     input RST,

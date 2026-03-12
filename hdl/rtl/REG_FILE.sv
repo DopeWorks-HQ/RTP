@@ -18,7 +18,7 @@
 */
 
 `timescale 1ns/1ps
-
+/* verilator lint_off MULTITOP */
 module REG_FILE
 #(
     parameter XWID = 32,
@@ -29,12 +29,12 @@ module REG_FILE
     input  logic [$clog2(XWID)-1:0] ADDR2,
     input  logic                    WEN,
     input  logic [$clog2(XWID)-1:0] WADDR,
-    input  logic [XLEN:0]           WDATA,
-    output logic [XLEN:0]           RS1,
-    output logic [XLEN:0]           RS2
+    input  logic [XLEN-1:0]           WDATA,
+    output logic [XLEN-1:0]           RS1,
+    output logic [XLEN-1:0]           RS2
 );
 
-    logic [XLEN:0] reg_file [0:XWID];
+    logic [XLEN-1:0] reg_file [0:XWID-1];
 
     initial begin
         reg_file[0] = '0;
@@ -51,6 +51,6 @@ module REG_FILE
 
     assign RS1 = (ADDR1 == '0) ? '0 : reg_file[ADDR1];
     assign RS2 = (ADDR2 == '0) ? '0 : reg_file[ADDR2];
-    
+
 /* verilator lint_off EOFNEWLINE */
 endmodule

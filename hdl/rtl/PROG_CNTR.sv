@@ -16,7 +16,7 @@
 */
 
 `timescale 1ns/1ps
-
+/* verilator lint_off MULTITOP */
 module PROG_CNTR
 #(parameter XLEN = 32)
 (
@@ -24,10 +24,10 @@ module PROG_CNTR
     input RST,
     input LOAD,
     input [XLEN-1:0] PC_IN,
-    output [XLEN-1:0] PC_OUT
+    output logic [XLEN-1:0] PC_OUT
 );
 
-    always_ff@(posdege CLK)
+    always_ff@(posedge CLK)
         if(RST)
             PC_OUT <= 0;
         else if(LOAD)

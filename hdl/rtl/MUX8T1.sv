@@ -39,7 +39,7 @@
 */ 
 
 `timescale 1ns/1ps 
-
+/* verilator lint_off MULTITOP */
 module MUX8T1
 #(parameter N = 32)
 (

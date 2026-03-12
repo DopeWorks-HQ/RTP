@@ -18,7 +18,7 @@
 
 */
 `timescale 1ns/1ps
-
+/* verilator lint_off MULTITOP */
 module MULT
 #(
     parameter MLEN = 32
@@ -32,9 +32,9 @@ module MULT
     input [MLEN-1:0] OP_A,
     input [MLEN-1:0] OP_B,
     output logic [MLEN-1:0] RESULT
-)
+);
 
-    logic [MLEN-1:0] product;
+    logic [(MLEN + MLEN)-1:0] product;
     logic [(MLEN + MLEN)-1:0] product_signed;
 
     logic mult_sel_reg;
@@ -50,8 +50,8 @@ module MULT
             sign_reg <= 0;
         end
         else if(MUL_EN) begin
-            product <= $unsigned(A) * $unsigned(B);
-            product_signed <= $signed(A) * $signed(B);
+            product <= $unsigned(OP_A) * $unsigned(OP_B);
+            product_signed <= $signed(OP_A) * $signed(OP_B);
             mult_sel_reg <= MUL_SEL;
             mult_en_reg <= MUL_EN;
             sign_reg <= SIGN;
@@ -82,4 +82,3 @@ module MULT
 
 /* verilator lint_off EOFNEWLINE */
 endmodule
-/* verilator lint_on EOFNEWLINE */

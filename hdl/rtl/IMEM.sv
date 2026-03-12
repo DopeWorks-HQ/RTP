@@ -15,12 +15,12 @@
 */
 
 `timescale 1ns/1ps
-
+/* verilator lint_off MULTITOP */
 module IMEM
 (
     input CLK,
     input IR_RD_EN,
-    input [13:0] IR_ADDR,
+    input [12:0] IR_ADDR,
     output logic [31:0] IR_OUT,
     output logic INVALID_ACCESS
 );
@@ -32,7 +32,7 @@ module IMEM
         $readmemh("program.mem", instruction_memory_24kb);
     end
     
-    assign EACCESS = (IR_ADDR > 14'd6143); // (24kb / 4 bytes) = 6144 words
+    assign EACCESS = (IR_ADDR > 13'd6143); // (24kb / 4 bytes) = 6144 words
 
     always_ff@(posedge CLK) begin
         if(IR_RD_EN) begin

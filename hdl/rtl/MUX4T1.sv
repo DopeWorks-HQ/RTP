@@ -32,7 +32,7 @@
 */ 
 
 `timescale 1ns/1ps 
-
+/* verilator lint_off MULTITOP */
 module MUX4T1
 #(parameter N = 32)
 (
