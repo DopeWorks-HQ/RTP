@@ -51,5 +51,6 @@ module REG_FILE
 
     assign RS1 = (ADDR1 == '0) ? '0 : reg_file[ADDR1];
     assign RS2 = (ADDR2 == '0) ? '0 : reg_file[ADDR2];
-
+    
+/* verilator lint_off EOFNEWLINE */
 endmodule

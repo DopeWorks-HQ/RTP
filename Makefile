@@ -38,7 +38,7 @@ BITSTREAM := $(word 2,$(MAKECMDGOALS))
 $(eval $(BITSTREAM):;@:)
 endif
 
-.PHONY: init-tb sim lint lint-all wave clean synth build install $(TOP)
+.PHONY: init-tb sim lint lint-all wave clean synth build install rars $(TOP)
 
 install:
 	sudo apt install gtkwave verilator iverilog openfpgaloader
@@ -173,3 +173,6 @@ synth:
 
 flash:
 	openFPGALoader -b basys3 $(BITSTREAM).bit
+
+rars:
+	java -jar rars/rars.jar

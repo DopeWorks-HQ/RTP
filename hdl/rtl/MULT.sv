@@ -80,5 +80,6 @@ module MULT
         end
     end
 
-
+/* verilator lint_off EOFNEWLINE */
 endmodule
+/* verilator lint_on EOFNEWLINE */
