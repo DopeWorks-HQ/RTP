@@ -29,7 +29,7 @@ module IMEM
     logic [31:0] instruction_memory_24kb [0:6143];
 
     initial begin 
-        $readmemh("program.mem", instruction_memory_24kb);
+        $readmemh("prog.mem", instruction_memory_24kb);
     end
     
     assign EACCESS = (IR_ADDR > 13'd6143); // (24kb / 4 bytes) = 6144 words

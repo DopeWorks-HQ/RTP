@@ -1,0 +1,5 @@
+.PHONY: instruction_feed_test
+
+instruction_feed_test:
+	iverilog -g2012 -o hdl/sim/tb_INSTRUCTION_FEED/tb_INSTRUCTION_FEED.vvp hdl/rtl/PROG_CNTR.sv hdl/rtl/IMEM.sv hdl/sim/tb_INSTRUCTION_FEED/INSTRUCTION_FEED.sv hdl/sim/tb_INSTRUCTION_FEED/tb_INSTRUCTION_FEED.sv \
+    && cd hdl/sim/tb_INSTRUCTION_FEED/ && vvp tb_INSTRUCTION_FEED.vvp && cd ../../../
